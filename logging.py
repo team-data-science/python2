@@ -1,6 +1,6 @@
 # create logger
 
-# write a error log log
+# write a error log 
 
 # write information to log file
 
