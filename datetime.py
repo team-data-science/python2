@@ -1,10 +1,10 @@
 
 # Generate datetime now
 
-# modify datetime now
+# Modify datetime now -1 hour
 
-# generate epoch
+# Generate epoch
 
-# read epoch into datetime and format
+# read epoch into custom datetime and format
 
-# read formated string into datetime and write epoch
+# read formated string into datetime and write epoch out again
