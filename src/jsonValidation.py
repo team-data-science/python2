@@ -165,6 +165,14 @@ json.loads(invalid_json_string)
 
 # create a validation function
 
+def validate_json(json_data):
+    try:
+        json.loads(json_data)
+    except ValueError as err:
+        return False
+    return True
+
+
 def validate_json_schema(json_data):
     """REF: https://json-schema.org/ """
 
@@ -179,6 +187,13 @@ def validate_json_schema(json_data):
 
     error_message = "Given JSON is valid."
     return True, error_message
+
+
+# validate valid json string
+validate_json()
+
+# validate INVALID json string
+validate_json(invalid_json_string)
 
 
 # validate data with valid schema
