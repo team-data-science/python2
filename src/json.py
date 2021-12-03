@@ -1,5 +1,8 @@
 # Import the json module
 import json
+from pprint import pprint
+# pp = pprint.PrettyPrinter(indent=4)
+
 
 # JSON basics
 
@@ -47,77 +50,92 @@ import json
 
 with open("./data/data_subset.json") as json_file:
     data = json.load(json_file)
-
-print(data)
-# > [{'InvoiceNo': 536370, 'StockCode': 22492, 'Description': 'MINI PAINT SET VINTAGE', 'Quantity': 36, 'InvoiceDate': '12/1/2010 8:45', 'UnitPrice': 0.65, 'CustomerID': 12583, 'Country': 'France'}, {'InvoiceNo': 536372, 'StockCode': 22632, 'Description': 'HAND WARMER RED POLKA DOT', 'Quantity': 6, 'InvoiceDate': '12/1/2010 9:01', 'UnitPrice': 1.85, 'CustomerID': 17850, 'Country': 'United Kingdom'}, {'InvoiceNo': 536389, 'StockCode': 22727, 'Description': 'ALARM CLOCK BAKELIKE RED', 'Quantity': 4, 'InvoiceDate': '12/1/2010 10:03', 'UnitPrice': 3.75, 'CustomerID': 12431, 'Country': 'Australia'}, {'InvoiceNo': 562106, 'StockCode': 22993, 'Description': 'SET OF 4 PANTRY JELLY MOULDS','Quantity': 1, 'InvoiceDate': '8/2/2011 15:19', 'UnitPrice': 1.25, 'CustomerID': 14076, 'Country': 'United Kingdom'}]
+pprint(data)
+# > [{'Country': 'France',
+# >   'CustomerID': 12583,
+# >   'Description': 'MINI PAINT SET VINTAGE',
+# >   'InvoiceDate': '12/1/2010 8:45',
+# >   'InvoiceNo': 536370,
+# >   'Quantity': 36,
+# >   'StockCode': 22492,
+# >   'UnitPrice': 0.65},
+# >  {'Country': 'United Kingdom',
+# >   'CustomerID': 17850,
+# >   'Description': 'HAND WARMER RED POLKA DOT',
+# >   'InvoiceDate': '12/1/2010 9:01',
+# >   'InvoiceNo': 536372,
+# >   'Quantity': 6,
+# >   'StockCode': 22632,
+# >   'UnitPrice': 1.85},
+# >  {'Country': 'Australia',
+# >   'CustomerID': 12431,
+# >   'Description': 'ALARM CLOCK BAKELIKE RED',
+# >   'InvoiceDate': '12/1/2010 10:03',
+# >   'InvoiceNo': 536389,
+# >   'Quantity': 4,
+# >   'StockCode': 22727,
+# >   'UnitPrice': 3.75},
+# >  {'Country': 'United Kingdom',
+# >   'CustomerID': 14076,
+# >   'Description': 'SET OF 4 PANTRY JELLY MOULDS',
+# >   'InvoiceDate': '8/2/2011 15:19',
+# >   'InvoiceNo': 562106,
+# >   'Quantity': 1,
+# >   'StockCode': 22993,
+# >   'UnitPrice': 1.25}]
 
 # Create JSON string (serialize object to a JSON formatted string) and pretty print of JSON string
 
-json.dumps(data)
+json_formatted_string = json.dumps(data)
+pprint(json_formatted_string)
 # > ('[{"InvoiceNo": 536370, "StockCode": 22492, "Description": "MINI PAINT SET '
 # >  'VINTAGE", "Quantity": 36, "InvoiceDate": "12/1/2010 8:45", "UnitPrice": '
 # >  '0.65, "CustomerID": 12583, "Country": "France"}, {"InvoiceNo": 536372, '
-# >  '"StockCode": 22632, "Description": "HAND WARMER RED POLKA DOT", '
-# >  '"Quantity": 6, "InvoiceDate": "12/1/2010 9:01", "UnitPrice": 1.85, '
-# >  '"CustomerID": 17850, "Country": "United Kingdom"}, {"InvoiceNo": 536389, '
-# >  '"StockCode": 22727, "Description": "ALARM CLOCK BAKELIKE RED", '
-# >  '"Quantity": 4, "InvoiceDate": "12/1/2010 10:03", "UnitPrice": 3.75, '
-# >  '"CustomerID": 12431, "Country": "Australia"}, {"InvoiceNo": 562106, '
-# >  '"StockCode": 22993, "Description": "SET OF 4 PANTRY JELLY MOULDS", '
-# >  '"Quantity": 1, "InvoiceDate": "8/2/2011 15:19", "UnitPrice": 1.25, '
-# >  '"CustomerID": 14076, "Country": "United Kingdom"}]')
-
-json_formatted_string = json.dumps(
-    data, indent=4)  # indent used for pretty print
-print(json_formatted_string)
-# > [
-# >     {
-# >         "InvoiceNo": 536370,
-# >         "StockCode": 22492,
-# >         "Description": "MINI PAINT SET VINTAGE",
-# >         "Quantity": 36,
-# >         "InvoiceDate": "12/1/2010 8:45",
-# >         "UnitPrice": 0.65,
-# >         "CustomerID": 12583,
-# >         "Country": "France"
-# >     },
-# >     {
-# >         "InvoiceNo": 536372,
-# >         "StockCode": 22632,
-# >         "Description": "HAND WARMER RED POLKA DOT",
-# >         "Quantity": 6,
-# >         "InvoiceDate": "12/1/2010 9:01",
-# >         "UnitPrice": 1.85,
-# >         "CustomerID": 17850,
-# >         "Country": "United Kingdom"
-# >     },
-# >     {
-# >         "InvoiceNo": 536389,
-# >         "StockCode": 22727,
-# >         "Description": "ALARM CLOCK BAKELIKE RED",
-# >         "Quantity": 4,
-# >         "InvoiceDate": "12/1/2010 10:03",
-# >         "UnitPrice": 3.75,
-# >         "CustomerID": 12431,
-# >         "Country": "Australia"
-# >     },
-# >     {
-# >         "InvoiceNo": 562106,
-# >         "StockCode": 22993,
-# >         "Description": "SET OF 4 PANTRY JELLY MOULDS",
-# >         "Quantity": 1,
-# >         "InvoiceDate": "8/2/2011 15:19",
-# >         "UnitPrice": 1.25,
-# >         "CustomerID": 14076,
-# >         "Country": "United Kingdom"
-# >     }
-# > ]
+# >  '"StockCode": 22632, "Description": "HAND WARMER RED POLKA DOT", "Quantity": '
+# >  '6, "InvoiceDate": "12/1/2010 9:01", "UnitPrice": 1.85, "CustomerID": 17850, '
+# >  '"Country": "United Kingdom"}, {"InvoiceNo": 536389, "StockCode": 22727, '
+# >  '"Description": "ALARM CLOCK BAKELIKE RED", "Quantity": 4, "InvoiceDate": '
+# >  '"12/1/2010 10:03", "UnitPrice": 3.75, "CustomerID": 12431, "Country": '
+# >  '"Australia"}, {"InvoiceNo": 562106, "StockCode": 22993, "Description": "SET '
+# >  'OF 4 PANTRY JELLY MOULDS", "Quantity": 1, "InvoiceDate": "8/2/2011 15:19", '
+# >  '"UnitPrice": 1.25, "CustomerID": 14076, "Country": "United Kingdom"}]')
 
 # Load JSON string (deserialize a str, bytes or bytearray instance containing a JSON document to a Python object)
 
 transactions_list_of_dicts = json.loads(json_formatted_string)
-print(transactions_list_of_dicts)
-# > [{'InvoiceNo': 536370, 'StockCode': 22492, 'Description': 'MINI PAINT SET VINTAGE', 'Quantity': 36, 'InvoiceDate': '12/1/2010 8:45', 'UnitPrice': 0.65, 'CustomerID': 12583, 'Country': 'France'}, {'InvoiceNo': 536372, 'StockCode': 22632, 'Description': 'HAND WARMER RED POLKA DOT', 'Quantity': 6, 'InvoiceDate': '12/1/2010 9:01', 'UnitPrice': 1.85, 'CustomerID': 17850, 'Country': 'United Kingdom'}, {'InvoiceNo': 536389, 'StockCode': 22727, 'Description': 'ALARM CLOCK BAKELIKE RED', 'Quantity': 4, 'InvoiceDate': '12/1/2010 10:03', 'UnitPrice': 3.75, 'CustomerID': 12431, 'Country': 'Australia'}, {'InvoiceNo': 562106, 'StockCode': 22993, 'Description': 'SET OF 4 PANTRY JELLY MOULDS','Quantity': 1, 'InvoiceDate': '8/2/2011 15:19', 'UnitPrice': 1.25, 'CustomerID': 14076, 'Country': 'United Kingdom'}]
+pprint(transactions_list_of_dicts)
+# > [{'Country': 'France',
+# >   'CustomerID': 12583,
+# >   'Description': 'MINI PAINT SET VINTAGE',
+# >   'InvoiceDate': '12/1/2010 8:45',
+# >   'InvoiceNo': 536370,
+# >   'Quantity': 36,
+# >   'StockCode': 22492,
+# >   'UnitPrice': 0.65},
+# >  {'Country': 'United Kingdom',
+# >   'CustomerID': 17850,
+# >   'Description': 'HAND WARMER RED POLKA DOT',
+# >   'InvoiceDate': '12/1/2010 9:01',
+# >   'InvoiceNo': 536372,
+# >   'Quantity': 6,
+# >   'StockCode': 22632,
+# >   'UnitPrice': 1.85},
+# >  {'Country': 'Australia',
+# >   'CustomerID': 12431,
+# >   'Description': 'ALARM CLOCK BAKELIKE RED',
+# >   'InvoiceDate': '12/1/2010 10:03',
+# >   'InvoiceNo': 536389,
+# >   'Quantity': 4,
+# >   'StockCode': 22727,
+# >   'UnitPrice': 3.75},
+# >  {'Country': 'United Kingdom',
+# >   'CustomerID': 14076,
+# >   'Description': 'SET OF 4 PANTRY JELLY MOULDS',
+# >   'InvoiceDate': '8/2/2011 15:19',
+# >   'InvoiceNo': 562106,
+# >   'Quantity': 1,
+# >   'StockCode': 22993,
+# >   'UnitPrice': 1.25}]
 
 # Access individual attributes within the object
 
@@ -127,7 +145,7 @@ transactions_list_of_dicts[0].keys()
 
 # Loop through a list of transactions and access all 'InvoiceNo' for each transaction by using .get method with a key name 'InvoiceNo'
 for transaction in transactions_list_of_dicts:
-    print(transaction.get('InvoiceNo'))
+    pprint(transaction.get('InvoiceNo'))
 # > 536370
 # > 536372
 # > 536389
@@ -135,7 +153,8 @@ for transaction in transactions_list_of_dicts:
 
 # or more pythonic via list comprehensions:
 
-[transaction.get('InvoiceNo') for transaction in transactions_list_of_dicts]
+pprint([transaction.get('InvoiceNo')
+       for transaction in transactions_list_of_dicts])
 # > [536370, 536372, 536389, 562106]
 
 # Modify the object's attributes
@@ -156,8 +175,16 @@ for transaction in transactions_list_of_dicts:
 # print the dictionary with InvoiceNo 536370
 for transaction in transactions_list_of_dicts:
     if transaction.get('InvoiceNo') == 536370:
-        print(transaction)
-# > {'InvoiceNo': 536370, 'StockCode': 22492, 'Description': 'MINI PAINT SET VINTAGE', 'Quantity': 36, 'InvoiceDate': '12/1/2010 8:45', 'UnitPrice': 0.65, 'CustomerID': 12583, 'Country': 'France'}
+        pprint(transaction)
+# > {'Country': 'France',
+# >  'CustomerID': 12583,
+# >  'Description': 'MINI PAINT SET VINTAGE',
+# >  'InvoiceDate': '12/1/2010 8:45',
+# >  'InvoiceNo': 536370,
+# >  'Quantity': 36,
+# >  'StockCode': 22492,
+# >  'UnitPrice': 0.65}
+
 
 # and replace it with new dictionary
 
@@ -175,25 +202,56 @@ update_dict = {
 for transaction in transactions_list_of_dicts:
     if transaction.get('InvoiceNo') == 536370:
         transaction.update(update_dict)
-print(transactions_list_of_dicts)
-# > [{'InvoiceNo': 1, 'StockCode': 1, 'Description': 'Updated dict', 'Quantity': 1, 'InvoiceDate': '9/9/9999 9:99', 'UnitPrice': 1, 'CustomerID': 1, 'Country': 'Nowhere'}, {'InvoiceNo': 536372, 'StockCode': 22632, 'Description': 'HAND WARMER RED POLKA DOT', 'Quantity': 6, 'InvoiceDate': '12/1/2010 9:01', 'UnitPrice': 1.85, 'CustomerID': 17850, 'Country': 'United Kingdom'}, {'InvoiceNo': 536389, 'StockCode': 22727, 'Description': 'ALARM CLOCK BAKELIKE RED', 'Quantity': 4, 'InvoiceDate': '12/1/2010 10:03', 'UnitPrice': 3.75, 'CustomerID': 12431, 'Country':'Australia'}, {'InvoiceNo': 562106, 'StockCode': 22993, 'Description': 'SET OF 4 PANTRY JELLY MOULDS', 'Quantity': 1, 'InvoiceDate': '8/2/2011 15:19', 'UnitPrice': 1.25, 'CustomerID': 14076, 'Country': 'United Kingdom'}]
+pprint(transactions_list_of_dicts)
+# > [{'Country': 'Nowhere',
+# >   'CustomerID': 1,
+# >   'Description': 'Updated dict',
+# >   'InvoiceDate': '9/9/9999 9:99',
+# >   'InvoiceNo': 1,
+# >   'Quantity': 1,
+# >   'StockCode': 1,
+# >   'UnitPrice': 1},
+# >  {'Country': 'United Kingdom',
+# >   'CustomerID': 17850,
+# >   'Description': 'HAND WARMER RED POLKA DOT',
+# >   'InvoiceDate': '12/1/2010 9:01',
+# >   'InvoiceNo': 536372,
+# >   'Quantity': 6,
+# >   'StockCode': 22632,
+# >   'UnitPrice': 1.85},
+# >  {'Country': 'Australia',
+# >   'CustomerID': 12431,
+# >   'Description': 'ALARM CLOCK BAKELIKE RED',
+# >   'InvoiceDate': '12/1/2010 10:03',
+# >   'InvoiceNo': 536389,
+# >   'Quantity': 4,
+# >   'StockCode': 22727,
+# >   'UnitPrice': 3.75},
+# >  {'Country': 'United Kingdom',
+# >   'CustomerID': 14076,
+# >   'Description': 'SET OF 4 PANTRY JELLY MOULDS',
+# >   'InvoiceDate': '8/2/2011 15:19',
+# >   'InvoiceNo': 562106,
+# >   'Quantity': 1,
+# >   'StockCode': 22993,
+# >   'UnitPrice': 1.25}]
+
 # Converting Python objects to JSON objects is also known as serialization or JSON encoding
 
 # Dump it back into a string:
 
-json.dumps(transactions_list_of_dicts)
-# > ('[{"InvoiceNo": 1, "StockCode": 1, "Description": "Updated dict", '
-# >  '"Quantity": 1, "InvoiceDate": "9/9/9999 9:99", "UnitPrice": 1, '
-# >  '"CustomerID": 1, "Country": "Nowhere"}, {"InvoiceNo": 536372, '
-# >  '"StockCode": 22632, "Description": "HAND WARMER RED POLKA DOT", '
-# >  '"Quantity": 6, "InvoiceDate": "12/1/2010 9:01", "UnitPrice": 1.85, '
-# >  '"CustomerID": 17850, "Country": "United Kingdom"}, {"InvoiceNo": 536389, '
-# >  '"StockCode": 22727, "Description": "ALARM CLOCK BAKELIKE RED", '
-# >  '"Quantity": 4, "InvoiceDate": "12/1/2010 10:03", "UnitPrice": 3.75, '
-# >  '"CustomerID": 12431, "Country": "Australia"}, {"InvoiceNo": 562106, '
-# >  '"StockCode": 22993, "Description": "SET OF 4 PANTRY JELLY MOULDS", '
-# >  '"Quantity": 1, "InvoiceDate": "8/2/2011 15:19", "UnitPrice": 1.25, '
-# >  '"CustomerID": 14076, "Country": "United Kingdom"}]')
+pprint(json.dumps(transactions_list_of_dicts))
+# > ('[{"InvoiceNo": 1, "StockCode": 1, "Description": "Updated dict", "Quantity": '
+# >  '1, "InvoiceDate": "9/9/9999 9:99", "UnitPrice": 1, "CustomerID": 1, '
+# >  '"Country": "Nowhere"}, {"InvoiceNo": 536372, "StockCode": 22632, '
+# >  '"Description": "HAND WARMER RED POLKA DOT", "Quantity": 6, "InvoiceDate": '
+# >  '"12/1/2010 9:01", "UnitPrice": 1.85, "CustomerID": 17850, "Country": "United '
+# >  'Kingdom"}, {"InvoiceNo": 536389, "StockCode": 22727, "Description": "ALARM '
+# >  'CLOCK BAKELIKE RED", "Quantity": 4, "InvoiceDate": "12/1/2010 10:03", '
+# >  '"UnitPrice": 3.75, "CustomerID": 12431, "Country": "Australia"}, '
+# >  '{"InvoiceNo": 562106, "StockCode": 22993, "Description": "SET OF 4 PANTRY '
+# >  'JELLY MOULDS", "Quantity": 1, "InvoiceDate": "8/2/2011 15:19", "UnitPrice": '
+# >  '1.25, "CustomerID": 14076, "Country": "United Kingdom"}]')
 
 # or to a file (do not forget to specify 'w' write mode):
 with open("./data/dumped_json.json", 'w') as json_file:
