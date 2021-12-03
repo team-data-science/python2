@@ -6,3 +6,7 @@
 
 - prepare APIs on AWS that can be used by the student
 - decide on hosting PostgreSQL for students on AWS or letting them set one up by themselves? (might be more complicated?)
+
+# data
+
+[ecommerce-data](https://www.kaggle.com/carrie1/ecommerce-data)
