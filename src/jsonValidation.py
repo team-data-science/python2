@@ -182,7 +182,7 @@ def validate_json_schema(json_data):
         validate(instance=json_data, schema=schema)
     except jsonschema.exceptions.ValidationError as err:
         print(err)
-        err = "Given JSON data is not valid"
+        err = "Given JSON data is not valid "
         return False, err
 
     error_message = "Given JSON is valid."
@@ -190,7 +190,7 @@ def validate_json_schema(json_data):
 
 
 # validate valid json string
-validate_json()
+validate_json(valid_json_string)
 
 # validate INVALID json string
 validate_json(invalid_json_string)
