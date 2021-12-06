@@ -8,7 +8,10 @@ e_commerce_csv_df = pd.read_csv(
 # create new average cloumn of all attributes
 quantity_array = e_commerce_csv_df["Quantity"].to_numpy()
 np.mean(quantity_array)
+# > 12.785
 # find minimum in dataframe
 np.min(quantity_array)
+# > -24
 # find maximum in dataframe
 np.max(quantity_array)
+# > 600
