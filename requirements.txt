@@ -2,3 +2,4 @@ jsonschema
 requests
 pandas
 pyarrow
+pytest
