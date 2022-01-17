@@ -5,6 +5,9 @@ import numpy as np
 e_commerce_data_path_csv = "./data/data.csv"
 e_commerce_csv_df = pd.read_csv(
     e_commerce_data_path_csv,  encoding='unicode_escape', nrows=1000)
+
+print(e_commerce_csv_df)
+    
 # create new average cloumn of all attributes
 quantity_array = e_commerce_csv_df["Quantity"].to_numpy()
 np.mean(quantity_array)

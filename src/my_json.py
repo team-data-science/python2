@@ -140,7 +140,7 @@ pprint(transactions_list_of_dicts)
 # Access individual attributes within the object
 
 # List of keys at the first list element (dictionary)
-transactions_list_of_dicts[0].keys()
+pprint(transactions_list_of_dicts[0].keys())
 # > dict_keys(['InvoiceNo', 'StockCode', 'Description', 'Quantity', 'InvoiceDate', 'UnitPrice', 'CustomerID', 'Country'])
 
 # Loop through a list of transactions and access all 'InvoiceNo' for each transaction by using .get method with a key name 'InvoiceNo'

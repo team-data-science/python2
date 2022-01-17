@@ -1,7 +1,7 @@
 import pandas as pd
 # load a csv file
 e_commerce_data_path_csv = "./data/data.csv"
-e_commerce_data_fake_path_csv = "fake_data.csv"
+e_commerce_data_fake_path_csv = "./data/fake_data.csv"
 
 # try - except example, raise a BaseException
 
@@ -10,7 +10,7 @@ try:
         e_commerce_data_fake_path_csv,  encoding='unicode_escape', nrows=1000)
 except:
     print(
-        f"Please provide a corect path to the file!"
+        "Please provide a corect path to the file!"
     )
 # > Please provide a corect path to the file!
 
@@ -20,6 +20,7 @@ try:
         e_commerce_data_fake_path_csv,  encoding='unicode_escape', nrows=1000)
 except FileNotFoundError as error:
     print(
+        # f stings for better formating
         f"{error}, please provide a corect path to the file!"
     )
 # > [Errno 2] No such file or directory: 'fake_data.csv', please provide a corect path to the file!

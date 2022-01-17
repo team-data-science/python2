@@ -5,18 +5,18 @@ import requests
 BASE_URL = "https://api.punkapi.com/v2/"
 # query data with GET - get all beers as json
 response = requests.get(f'{BASE_URL}/beers')
-response.status_code
+print(response.status_code)
 # > 200
 
 # Response's headers
-response.headers
+print(response.headers)
 # > {'Date': 'Sun, 05 Dec 2021 19:13:10 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-origin': '*', 'cache-control': 'public, max-age=14400, must-revalidate', 'x-dns-prefetch-control': 'off', 'etag': 'W/"b763-uq9mCpw3GfGLWVDAEjtO7T6F6Ng"', 'x-download-options': 'noopen', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-xss-protection': '1; mode=block', 'x-ratelimit-limit': '3600', 'access-control-allow-credentials': 'true', 'x-content-type-options': 'nosniff', 'x-frame-options': 'SAMEORIGIN', 'x-ratelimit-remaining': '3455', 'x-ratelimit-reset': '1638702739', 'access-control-expose-headers': 'x-ratelimit-limit,x-ratelimit-remaining,content-length,origin,content-type,accept', 'x-vercel-cache': 'MISS', 'age': '30070','x-vercel-id': 'arn1::sfo1::vzxk7-1638701519956-7a018e92b5a5', 'content-encoding': 'gzip', 'CF-Cache-Status': 'HIT', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=mwe4F2a60%2BrZm2KCfY5%2Fcx7yLUmSYw6Zs7HQ2pSVqkE909oeVlj4vsQlrr2tLbwL5NrMJAu%2BNdyIyVA22yqcUMUueZKTSLgUCq%2BGvLpxGFAPZ6WLFCw4hANOp55OJ9xg50w%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}','Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '6b8f971ad9950b61-OSL', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400'}
 
 # there is a builtin JSON decoder, in case you are dealing with JSON data
 all_beers = response.json()
 
 # example of first dictionary entity in a list of beers
-all_beers[0]
+print(all_beers[0])
 # > { 'abv': 4.5,
 # >   'attenuation_level': 75,
 # >   'boil_volume': {'unit': 'litres', 'value': 25},
@@ -86,7 +86,7 @@ payload = {
     'abv_lt': 20
 }
 response = requests.get(f'{BASE_URL}/beers', params=payload)
-response
+print(response)
 # > <Response [200]>
 beers_between_20_and_15_percent = response.json()
 
@@ -95,11 +95,11 @@ response.url
 # > 'https://api.punkapi.com/v2/beers?abv_gt=15&abv_lt=20'
 
 # 9 beers
-len(beers_between_20_and_15_percent)
+print(len(beers_between_20_and_15_percent))
 # > 9
 
 # List of all the keys
-beers_between_20_and_15_percent[0].keys()
+print(beers_between_20_and_15_percent[0].keys())
 # > dict_keys(['id', 'name', 'tagline', 'first_brewed', 'description', 'image_url', 'abv', 'ibu', 'target_fg', 'target_og', 'ebc', 'srm', 'ph', 'attenuation_level', 'volume', 'boil_volume', 'method', 'ingredients', 'food_pairing', 'brewers_tips', 'contributed_by'])
 
 # Lets get their names and alcohol percentages
@@ -205,7 +205,7 @@ beer_no_1
 BASE_URL = "https://reqres.in/api"
 
 response = requests.get(f"{BASE_URL}/users/2")
-response.json()
+print(response.json())
 # > { 'data': { 'avatar': 'https://reqres.in/img/faces/2-image.jpg',
 # >             'email': 'janet.weaver@reqres.in',
 # >             'first_name': 'Janet',
@@ -229,7 +229,7 @@ response = requests.post(f"{BASE_URL}/users", data=new_user)
 response
 # > <Response [201]>
 # Created user
-response.json()
+print(response.json())
 # > { 'createdAt': '2021-12-05T19:13:11.710Z',
 # >   'id': '247',
 # >   'job': 'Data Engineer',
