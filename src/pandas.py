@@ -155,8 +155,8 @@ cols_to_normalize = ["Quantity", "UnitPrice"]
 def absolute_maximum_scale(series):
     return series / series.abs().max()
 
-    for column in cols_to_normalize:
-        e_commerce_csv_df[column] = absolute_maximum_scale(
+for column in cols_to_normalize:
+    e_commerce_csv_df[column] = absolute_maximum_scale(
             e_commerce_csv_df[column])
 
 
