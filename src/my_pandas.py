@@ -1,3 +1,4 @@
+# pip install pandas
 import pandas as pd
 
 # load a csv file
@@ -5,17 +6,19 @@ e_commerce_data_path_csv = "./data/data.csv"
 e_commerce_csv_df = pd.read_csv(
     e_commerce_data_path_csv,  encoding='unicode_escape', nrows=1000)
 # show columns
-e_commerce_csv_df.columns
+print(e_commerce_csv_df.columns)
 # > Index(['InvoiceNo', 'StockCode', 'Description', 'Quantity', 'InvoiceDate',
 # >        'UnitPrice', 'CustomerID', 'Country'],
 # >       dtype='object')
+
+print(e_commerce_csv_df)
 
 #######################################################################
 # Working with Datatypes
 #######################################################################
 
 # show types
-e_commerce_csv_df.dtypes
+print(e_commerce_csv_df.dtypes)
 # > InvoiceNo       object
 # > StockCode       object
 # > Description     object
@@ -30,7 +33,7 @@ e_commerce_csv_df.dtypes
 e_commerce_csv_df = e_commerce_csv_df.convert_dtypes()
 # New dtypes
 
-e_commerce_csv_df.dtypes
+print(e_commerce_csv_df.dtypes)
 # > InvoiceNo       string
 # > StockCode       string
 # > Description     string
@@ -49,7 +52,7 @@ temp_dtype_change_df = e_commerce_csv_df.astype(
      'CustomerID': 'float64'
      }
 )
-temp_dtype_change_df.dtypes
+print(temp_dtype_change_df.dtypes)
 # > InvoiceNo       string
 # > StockCode       string
 # > Description     string
@@ -70,12 +73,12 @@ e_commerce_json_df = pd.read_json(
     e_commerce_data_path_json,  encoding='unicode_escape')
 
 # see how many rows you should have after appending
-len(e_commerce_csv_df) + len(e_commerce_json_df)
+print(len(e_commerce_csv_df) + len(e_commerce_json_df))
 # > 1004
 
 # Append the csv and the json to a new dataframe
 e_commerce_appended_df = e_commerce_csv_df.append(e_commerce_json_df)
-e_commerce_appended_df
+print(e_commerce_appended_df)
 # >     InvoiceNo StockCode                          Description  Quantity         InvoiceDate UnitPrice  CustomerID         Country
 # > 0      536365    85123A   WHITE HANGING HEART T-LIGHT HOLDER         6 2010-12-01 08:26:00      2.55       17850  United Kingdom
 # > 1      536365     71053                  WHITE METAL LANTERN         6 2010-12-01 08:26:00      3.39       17850  United Kingdom
@@ -90,11 +93,11 @@ e_commerce_appended_df
 # > 3      562106     22993         SET OF 4 PANTRY JELLY MOULDS         1 2011-08-02 15:19:00      1.25       14076  United Kingdom
 # >
 # > [1004 rows x 8 columns]
-len(e_commerce_appended_df)
+#len(e_commerce_appended_df)
 # > 1004
 
 # print out first few rows of the dataframe
-e_commerce_appended_df.head(10)
+print(e_commerce_appended_df.head(10))
 # >   InvoiceNo StockCode                          Description  Quantity     InvoiceDate UnitPrice  CustomerID         Country
 # > 0    536365    85123A   WHITE HANGING HEART T-LIGHT HOLDER         6  12/1/2010 8:26      2.55       17850  United Kingdom
 # > 1    536365     71053                  WHITE METAL LANTERN         6  12/1/2010 8:26      3.39       17850  United Kingdom
@@ -107,9 +110,25 @@ e_commerce_appended_df.head(10)
 # > 8    536366     22632            HAND WARMER RED POLKA DOT         6  12/1/2010 8:28      1.85       17850  United Kingdom
 # > 9    536367     84879        ASSORTED COLOUR BIRD ORNAMENT        32  12/1/2010 8:34      1.69       13047  United Kingdom
 
+
+##########################################################
+# Merging of dataframes
+##########################################################
+
+my_json = '{"Country" : ["United Kingdom", "France", "Australia", "Netherlands"], "Language":["English" , "French", "English" , "Dutch"]}'
+json_df = pd.read_json(my_json)
+print(json_df)
+
+e_commerce_csv_df = e_commerce_csv_df.merge(json_df,on = "Country")
+print(e_commerce_csv_df)
+
+##########################################################
+# turning into timestamp
+##########################################################
+
 # do a lambda to change of the timestamp from / to epoch
 # before
-e_commerce_appended_df.dtypes
+print(e_commerce_appended_df.dtypes)
 # > InvoiceNo      object
 # > StockCode      object
 # > Description    object
@@ -124,7 +143,7 @@ e_commerce_appended_df['InvoiceDate'] = pd.to_datetime(
     e_commerce_appended_df['InvoiceDate'])
 
 # after
-e_commerce_appended_df.dtypes
+print(e_commerce_appended_df.dtypes)
 # > InvoiceNo              object
 # > StockCode              object
 # > Description            object
@@ -136,7 +155,7 @@ e_commerce_appended_df.dtypes
 # > dtype: object
 
 # Filter out two columns "Country" and "Quantity"
-e_commerce_appended_df.columns
+print(e_commerce_appended_df.columns)
 # > Index(['InvoiceNo', 'StockCode', 'Description', 'Quantity', 'InvoiceDate',
 # >        'UnitPrice', 'CustomerID', 'Country'],
 # >       dtype='object')
@@ -144,14 +163,14 @@ e_commerce_appended_df.columns
 e_commerce_appended_df = e_commerce_appended_df.drop(
     ["Country", "Quantity"], axis="columns")
 
-e_commerce_appended_df.columns
+print(e_commerce_appended_df.columns)
 # > Index(['InvoiceNo', 'StockCode', 'Description', 'InvoiceDate', 'UnitPrice',
 # >        'CustomerID'],
 # >       dtype='object')
 
 # normalize the dataframe
 # normalize a Pandas Column with Maximum Absolute Scaling using Pandas
-e_commerce_csv_df.head(5)
+print(e_commerce_csv_df.head(5))
 # >   InvoiceNo StockCode                          Description  Quantity     InvoiceDate  UnitPrice  CustomerID         Country
 # > 0    536365    85123A   WHITE HANGING HEART T-LIGHT HOLDER         6  12/1/2010 8:26       2.55       17850  United Kingdom
 # > 1    536365     71053                  WHITE METAL LANTERN         6  12/1/2010 8:26       3.39       17850  United Kingdom
@@ -159,14 +178,14 @@ e_commerce_csv_df.head(5)
 # > 3    536365    84029G  KNITTED UNION FLAG HOT WATER BOTTLE         6  12/1/2010 8:26       3.39       17850  United Kingdom
 # > 4    536365    84029E       RED WOOLLY HOTTIE WHITE HEART.         6  12/1/2010 8:26       3.39       17850  United Kingdom
 
-cols_to_normalize = ["Quantity", "UnitPrice"]
 
+cols_to_normalize = ["Quantity", "UnitPrice"]
 
 def absolute_maximum_scale(series):
     return series / series.abs().max()
 
-    for column in cols_to_normalize:
-        e_commerce_csv_df[column] = absolute_maximum_scale(e_commerce_csv_df[column])
+for column in cols_to_normalize:
+    e_commerce_csv_df[column] = absolute_maximum_scale(e_commerce_csv_df[column])
 
 
 
@@ -178,9 +197,20 @@ print(e_commerce_csv_df.head(5))
 # > 3    536365    84029G  KNITTED UNION FLAG HOT WATER BOTTLE      0.01  12/1/2010 8:26   0.020545       17850  United Kingdom
 # > 4    536365    84029E       RED WOOLLY HOTTIE WHITE HEART.      0.01  12/1/2010 8:26   0.020545       17850  United Kingdom
 
-# pivot the normalized dataframe
 
-e_commerce_csv_df["Country"].unique()
+##########################################################
+# Working with lambdas
+##########################################################
+
+e_commerce_csv_df['UnitPrice'] = e_commerce_csv_df['UnitPrice'].apply(lambda s: s*100)
+print(e_commerce_csv_df)
+
+
+##########################################################
+# Pivoting dataframes
+##########################################################
+# pivot the previously normalized dataframe
+print(e_commerce_csv_df["Country"].unique())
 # > <StringArray>
 # > ['United Kingdom', 'France', 'Australia', 'Netherlands']
 # > Length: 4, dtype: string
@@ -188,6 +218,8 @@ e_commerce_csv_df["Country"].unique()
 e_commerce_csv_df["unique_id"] = e_commerce_csv_df["InvoiceNo"] + \
     e_commerce_csv_df["StockCode"] + \
     e_commerce_csv_df["CustomerID"].astype("str")
+
+print(e_commerce_csv_df.head(10))
 
 e_commerce_pivoted = (e_commerce_csv_df
                       .filter(items=["unique_id", "UnitPrice", "Country"])
@@ -224,8 +256,10 @@ e_commerce_pivoted.to_parquet('./data/e_commerce_pivoted.parquet.gzip',
 
 # read parquet file
 
-pd.read_parquet(
+read_parquet = pd.read_parquet(
     './data/e_commerce_pivoted.parquet.gzip')
+
+print(read_parquet.head(10))
 # > Country          unique_id  Australia  France  Netherlands  United Kingdom
 # > 0         5363652173017850       <NA>    <NA>         <NA>        0.025758
 # > 1         5363652275217850       <NA>    <NA>         <NA>        0.046364
@@ -241,14 +275,33 @@ pd.read_parquet(
 # >
 # > [945 rows x 5 columns]
 
-
 ##########################################################
-# Merging of dataframes
+# melting dataframes
 ##########################################################
 
-my_json = '{"Country" : ["United Kingdom", "France", "Australia", "Netherlands"], "Language":["English" , "French", "English" , "Dutch"]}'
-json_df = pd.read_json(my_json)
-print(json_df)
 
-e_commerce_csv_df = e_commerce_csv_df.merge(json_df,on = "Country")
-print(e_commerce_csv_df)
+print(e_commerce_json_df)
+melted_df = e_commerce_json_df.melt(id_vars=['InvoiceNo'])
+print(melted_df)
+
+
+#############################################################
+# Flattening (normalizing of ) dataframes from nested JSONs
+#############################################################
+
+json_obj = {
+    'InvoiceNo': '536370',
+    'Quantity': 36,
+    'InvoiceDate': '12/1/2010 8:45',
+    'CustomerID': 2,
+    'Country': 'France',
+    'item': {
+        'StockCode': 'John Kasich',
+        'Description': 'MINI PAINT SET VINTAGE',
+        'UnitPrice': 'UnitPrice'}
+}
+json_df_raw = pd.DataFrame.from_dict(json_obj)
+print(json_df_raw.dtypes)
+
+json_df_normalized = pd.json_normalize(json_obj)
+print(json_df_normalized.dtypes)

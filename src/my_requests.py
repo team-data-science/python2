@@ -111,7 +111,7 @@ short_summary_of_beers = [
     for beer in beers_between_20_and_15_percent
 ]
 
-short_summary_of_beers
+print(short_summary_of_beers)
 # > [ {'beer_alcohol': 16.5, 'beer_name': 'Anarchist Alchemist'},
 # >   {'beer_alcohol': 15.2, 'beer_name': 'Lumberjack Stout'},
 # >   {'beer_alcohol': 18.3, 'beer_name': "Bowman's Beard - B-Sides"},
@@ -133,12 +133,12 @@ short_summary_of_beers
 beer_id = 1
 
 response = requests.get(f'{BASE_URL}/beers/{beer_id}')
-response.status_code
+print(response.status_code)
 # > 200
 beer_no_1 = response.json()
-len(beer_no_1)
+print(len(beer_no_1))
 # > 1
-beer_no_1
+print(beer_no_1)
 # > [ { 'abv': 4.5,
 # >     'attenuation_level': 75,
 # >     'boil_volume': {'unit': 'litres', 'value': 25},
@@ -226,7 +226,7 @@ new_user = {
 
 # Create a new user
 response = requests.post(f"{BASE_URL}/users", data=new_user)
-response
+print(response)
 # > <Response [201]>
 # Created user
 print(response.json())
@@ -234,3 +234,4 @@ print(response.json())
 # >   'id': '247',
 # >   'job': 'Data Engineer',
 # >   'name': 'New User'}
+

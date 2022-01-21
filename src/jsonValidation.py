@@ -55,9 +55,9 @@ def validate_json(json_data):
     return True
 
 
-def validate_json_schema(json_data, schema):
+def validate_json_schema(json_data, my_schema):
     """REF: https://json-schema.org/ """
-    schema = transaction_schema
+    schema = my_schema
     try:
         validate(instance=json_data, schema=schema)
     except jsonschema.exceptions.ValidationError as err:
@@ -212,12 +212,12 @@ if __name__ == '__main__':
     print(res)
  
     # validate data with valid schema
-    res = validate_json_schema(valid_transaction_dict,  schema=transaction_schema)
+    res = validate_json_schema(valid_transaction_dict,  my_schema=transaction_schema)
     print(res)
     # > (True, 'Given JSON data is Valid')
 
     # validate data with invalid schema
-    res = validate_json_schema(InvoiceNo_is_a_string,  schema=transaction_schema)
+    res = validate_json_schema(InvoiceNo_is_a_string,  my_schema=transaction_schema)
     print(res)
     # > '536370' is not of type 'integer'
     # >

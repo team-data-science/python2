@@ -46,9 +46,12 @@ class FileHasToManyRows(Exception):
 try:
     e_commerce_csv_df = pd.read_csv(
         e_commerce_data_path_csv,  encoding='unicode_escape', nrows=1100)
+
     number_of_rows = len(e_commerce_csv_df)
+
     if number_of_rows > 1000:
         raise FileHasToManyRows(number_of_rows)
+    
 except FileNotFoundError as error:
     print(
         f"{error}, please provide a corect path to the file!"
