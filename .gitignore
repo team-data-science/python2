@@ -3,7 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
 ### VS Code
-.vscode/*
+.vscode/settings.json
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
