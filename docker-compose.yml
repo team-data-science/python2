@@ -4,7 +4,7 @@ services:
 
   db:
     image: postgres
-    restart: always
+    restart: on-failure
     environment:
       POSTGRES_PASSWORD: example
     ports:
